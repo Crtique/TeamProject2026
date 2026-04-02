@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Jump();
     }
 
     private void FixedUpdate()
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         PlayerMove();
     }
 
+    // --- Player Movement Function ---
     void PlayerMove()
     {
         if (Input.GetKey(KeyCode.A))
@@ -36,6 +37,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(Vector3.right * speed * 10f, ForceMode.Force);
+        }
+    }
+
+    // --- Jump Function ---
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * 20f, ForceMode.Impulse);
         }
     }
 }
