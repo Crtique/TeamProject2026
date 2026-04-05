@@ -532,7 +532,7 @@ MonoBehaviour:
   jumpHeight: 10
   jumpCooldown: 5
   airMultiplier: 2
-  gDrag: 4
+  gDrag: 3
   playerHeight: 2
   isGround:
     serializedVersion: 2
