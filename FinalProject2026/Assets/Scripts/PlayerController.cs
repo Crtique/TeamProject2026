@@ -10,14 +10,21 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 20f;
     public float jumpCooldown = 5f;
     public float airMultiplier = 3;
-    private bool ableToJump = true;
+    private bool ableToJump;
 
-    public float gDrag = 5f;
+    [Header("Ground and Air Drag")]
+    public float gDrag = 5f; // Ground Drag
+    public float aDrag = 3f; // Air Drag
 
     [Header("Ground Checks")]
     public float playerHeight;
     public LayerMask isGround;
     private bool isGrounded;
+
+    [Header("Slideing Checks")]
+    public float height;
+    public float slideHeight;
+    private bool ableToSlide;
 
     // --- Declare Components ---
     private Rigidbody rb;
@@ -26,6 +33,8 @@ public class PlayerController : MonoBehaviour
     {
         // Grab the Ridgidbody Component at the start of the game
         rb = GetComponent<Rigidbody>();
+
+        height = transform.localScale.y;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,7 +56,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
             rb.linearDamping = gDrag;
         else
-            rb.linearDamping = 0;
+            rb.linearDamping = aDrag;
     }
 
     // FixedUpdate is called every fixed frame
@@ -66,6 +75,19 @@ public class PlayerController : MonoBehaviour
 
             Invoke(nameof(JumpReset), jumpCooldown);
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            ableToSlide = false;
+            rb.AddForce(Vector3.right * 100f, ForceMode.Acceleration);
+            Slide();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            ableToSlide = true;
+            transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
+        }
+
     }
 
     // Player Movement Function called every fixed frame
@@ -112,5 +134,11 @@ public class PlayerController : MonoBehaviour
     void JumpReset()
     {
         ableToJump = true;
+    }
+
+    void Slide()
+    {
+        transform.localScale = new Vector3(transform.localScale.x, slideHeight, transform.localScale.z);
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
 }
