@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Checks")]
     public float playerHeight;
     public LayerMask isGround;
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Slope Control")]
     public float slopeAngle;

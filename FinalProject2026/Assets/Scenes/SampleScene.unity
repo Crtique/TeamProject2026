@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138318873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Modular Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 638725748}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Basic Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 767423477}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,6 +683,7 @@ GameObject:
   - component: {fileID: 1318278917}
   - component: {fileID: 1318278916}
   - component: {fileID: 1318278921}
+  - component: {fileID: 1318278922}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -824,12 +825,29 @@ MonoBehaviour:
   jumpHeight: 10
   jumpCooldown: 5
   airMultiplier: 1
-  gDrag: 5
+  gDrag: 3
   playerHeight: 2
   isGround:
     serializedVersion: 2
     m_Bits: 8
+  isGrounded: 0
   slopeAngle: 45
+--- !u!114 &1318278922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318278915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea441a2a93badb4993e4b443e17076a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObj: {fileID: 1318278920}
+  slideForce: 200
+  maxSlideTime: 0.75
+  slidingHeight: 0.5
 --- !u!1 &1455294904
 GameObject:
   m_ObjectHideFlags: 0
