@@ -21,11 +21,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask isGround;
     private bool isGrounded;
 
-    [Header("Slideing Checks")]
-    public float height;
-    public float slideHeight;
-    private bool ableToSlide;
-
     // --- Declare Components ---
     private Rigidbody rb;
 
@@ -33,8 +28,6 @@ public class PlayerController : MonoBehaviour
     {
         // Grab the Ridgidbody Component at the start of the game
         rb = GetComponent<Rigidbody>();
-
-        height = transform.localScale.y;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -75,19 +68,6 @@ public class PlayerController : MonoBehaviour
 
             Invoke(nameof(JumpReset), jumpCooldown);
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            ableToSlide = false;
-            rb.AddForce(Vector3.right * 100f, ForceMode.Acceleration);
-            Slide();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            ableToSlide = true;
-            transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
-        }
-
     }
 
     // Player Movement Function called every fixed frame
@@ -134,11 +114,5 @@ public class PlayerController : MonoBehaviour
     void JumpReset()
     {
         ableToJump = true;
-    }
-
-    void Slide()
-    {
-        transform.localScale = new Vector3(transform.localScale.x, slideHeight, transform.localScale.z);
-        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
 }
