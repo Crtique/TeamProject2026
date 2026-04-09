@@ -12,9 +12,8 @@ public class PlayerController : MonoBehaviour
     public float airMultiplier = 3;
     private bool ableToJump;
 
-    [Header("Ground and Air Drag")]
+    [Header("Ground Drag")]
     public float gDrag = 5f; // Ground Drag
-    public float aDrag = 3f; // Air Drag
 
     [Header("Ground Checks")]
     public float playerHeight;
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
             rb.linearDamping = gDrag;
         else
-            rb.linearDamping = aDrag;
+            rb.linearDamping = 0;
     }
 
     // FixedUpdate is called every fixed frame
