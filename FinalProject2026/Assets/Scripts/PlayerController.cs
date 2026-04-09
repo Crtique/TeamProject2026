@@ -1,11 +1,14 @@
 /*Script was written by CJ Robinson. handle player movement using ridgidbody*/
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
     // --- Declare Variables ---
     [Header("Player Movement")]
     public float speed = 10f;
+    private Vector3 move;
 
     public float jumpHeight = 20f;
     public float jumpCooldown = 5f;
@@ -19,6 +22,11 @@ public class PlayerController : MonoBehaviour
     public float playerHeight;
     public LayerMask isGround;
     private bool isGrounded;
+
+    [Header("Slope Control")]
+    public float slopeAngle;
+    private RaycastHit slopeHit;
+    private bool exitSlop;
 
     // --- Declare Components ---
     private Rigidbody rb;
@@ -72,32 +80,47 @@ public class PlayerController : MonoBehaviour
     // Player Movement Function called every fixed frame
     void PlayerMove()
     {
-        if (Input.GetKey(KeyCode.A))
+        float horizontal = Input.GetAxisRaw("Horizontal"); 
+
+        move = transform.right * horizontal;
+
+        if (OnSlope() && !exitSlop)
         {
-            if (isGrounded)
-                rb.AddForce(-Vector3.right * speed * 10f, ForceMode.Force);
-            else if (!isGrounded)
-                rb.AddForce(-Vector3.right * speed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(GetSlopeDirection() * speed * 20f, ForceMode.Force);
+
+            if (rb.linearVelocity.y > 0)
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (isGrounded)
-                rb.AddForce(Vector3.right * speed * 10f, ForceMode.Force);
-            else if (!isGrounded)
-                rb.AddForce(Vector3.right * speed * 10f * airMultiplier, ForceMode.Force);
-        }
+
+        // on ground
+        else if (isGrounded)
+            rb.AddForce(move * speed * 10f, ForceMode.Force);
+
+        // in air
+        else if (!isGrounded)
+            rb.AddForce(move * speed * 10f * airMultiplier, ForceMode.Force);
     }
 
     // Player Speed Control function called every frame
     void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        
-        // Limit the velocity if need be
-        if (flatVel.magnitude > speed)
+        // Limit slope speed
+        if (OnSlope() && !exitSlop)
         {
-            Vector3 limitedVel = flatVel.normalized * speed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            if (rb.linearVelocity.magnitude > speed)
+                rb.linearVelocity = rb.linearVelocity.normalized * speed;
+        }
+        // Limit speed on ground or in the air
+        else
+        {
+            Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+            // Limit the velocity if need be
+            if (flatVel.magnitude > speed)
+            {
+                Vector3 limitedVel = flatVel.normalized * speed;
+                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            }
         }
 
     }
@@ -105,6 +128,8 @@ public class PlayerController : MonoBehaviour
     // Jump Function called every frame
     void Jump()
     {
+        exitSlop = true;
+
         // Reset the Y velocity
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
@@ -113,5 +138,30 @@ public class PlayerController : MonoBehaviour
     void JumpReset()
     {
         ableToJump = true;
+
+        exitSlop = false;
     }
+    
+    // Slope Control
+    private bool OnSlope()
+    {
+        // Check if we are on the slope and store that posisiton
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            // Calculate how steep the slope is with Vector3.Angle function
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            // Check if we are angled or not
+            return angle < slopeAngle && angle != 0f;
+
+        }
+
+        return false;
+    }
+
+    // Get the direction we move on the slope
+    private Vector3 GetSlopeDirection()
+    {
+        return Vector3.ProjectOnPlane(move, slopeHit.normal).normalized;
+    }
+
 }
