@@ -22,11 +22,13 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
+    private Animator playerAnim;
 
     void Awake()
     {
         // Grab the Ridgidbody Component at the start of the game
         rb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -109,9 +111,11 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+        playerAnim.SetTrigger("Jumping");
     }
     void JumpReset()
     {
         ableToJump = true;
+        playerAnim.SetTrigger("Running");
     }
 }
