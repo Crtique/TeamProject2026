@@ -1,4 +1,5 @@
 /*Script was written by CJ Robinson. handle player movement using ridgidbody*/
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     private Vector3 move;
 
+    public bool sliding;
+
+    [Header("Jumping Control")]
     public float jumpHeight = 20f;
     public float jumpCooldown = 5f;
     public float airMultiplier = 3;
@@ -21,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Checks")]
     public float playerHeight;
     public LayerMask isGround;
-    public bool isGrounded;
+    private bool isGrounded;
 
     [Header("Slope Control")]
     public float slopeAngle;
@@ -30,7 +34,13 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
-
+    public MovementState state;
+    public enum MovementState
+    {
+        moveing,
+        sliding,
+        air
+    }
     void Awake()
     {
         // Grab the Ridgidbody Component at the start of the game
@@ -86,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         if (OnSlope() && !exitSlop)
         {
-            rb.AddForce(GetSlopeDirection() * speed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeDirection(move) * speed * 20f, ForceMode.Force);
 
             if (rb.linearVelocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
@@ -143,7 +153,7 @@ public class PlayerController : MonoBehaviour
     }
     
     // Slope Control
-    private bool OnSlope()
+    public bool OnSlope()
     {
         // Check if we are on the slope and store that posisiton
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
@@ -159,9 +169,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // Get the direction we move on the slope
-    private Vector3 GetSlopeDirection()
+    public Vector3 GetSlopeDirection(Vector3 move)
     {
         return Vector3.ProjectOnPlane(move, slopeHit.normal).normalized;
     }
-
 }

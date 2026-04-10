@@ -17,8 +17,6 @@ public class PlayerSlidingController : MonoBehaviour
     public float slidingHeight;
     private float startingHeight;
 
-    private bool sliding;
-
     // --- Inputs ---
     private float horizontal;
 
@@ -41,21 +39,21 @@ public class PlayerSlidingController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
 
         // If the key is down and the player is grounded then slide
-        if (Input.GetKeyDown(KeyCode.LeftControl) && player.isGrounded)
+        if (Input.GetKeyDown(KeyCode.LeftControl))
             StartSlide();
-        if (Input.GetKeyUp(KeyCode.LeftControl) && sliding )
+        if (Input.GetKeyUp(KeyCode.LeftControl) && player.sliding )
             StopSlide();
 
     }
     private void FixedUpdate()
     {
-        if (sliding)
+        if (player.sliding)
             SlidingMovement();
     }
 
     void StartSlide()
     {
-        sliding = true;
+        player.sliding = true;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, slidingHeight, playerObj.localScale.z);
         rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -63,14 +61,23 @@ public class PlayerSlidingController : MonoBehaviour
 
     void SlidingMovement()
     {
+        // Slinding direction based on the players Input
         Vector3 slidingDirection = Vector3.right * horizontal;
-
-        rb.AddForce(slidingDirection * slideForce, ForceMode.Force);
+        // Normal Sliding
+        if (!player.OnSlope() || rb.linearVelocity.y > -0.1f)
+        {
+            rb.AddForce(slidingDirection * slideForce, ForceMode.Force);
+        }
+        // Sliding down a slope
+        else
+        {
+            rb.AddForce(player.GetSlopeDirection(slidingDirection) * slideForce, ForceMode.Force);
+        }
     }
 
     void StopSlide()
     {
-        sliding = false;
+        player.sliding = false;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, startingHeight, playerObj.localScale.z);
     }
