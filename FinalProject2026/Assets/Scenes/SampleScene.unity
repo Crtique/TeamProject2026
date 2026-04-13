@@ -519,8 +519,8 @@ Transform:
   m_GameObject: {fileID: 949843972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
-  m_LocalPosition: {x: 0.96, y: 1.68, z: 14.04}
-  m_LocalScale: {x: 14.96381, y: 1, z: 5.9293923}
+  m_LocalPosition: {x: 28.37, y: 11.66, z: 14.04}
+  m_LocalScale: {x: 92.2893, y: 1, z: 5.9293923}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 767423477}
@@ -753,8 +753,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   slideSpeed: 30
-  speedIncreaseMultiplier: 1.5
-  slopeIncreaseMultiplier: 2.5
   sliding: 0
   jumpHeight: 10
   jumpCooldown: 5
@@ -765,7 +763,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   slopeAngle: 45
-  state: 0
 --- !u!114 &1318278922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +777,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1318278920}
   slideForce: 200
-  maxSlideTime: 0.75
   slidingHeight: 0.5
 --- !u!1 &1455294904
 GameObject:

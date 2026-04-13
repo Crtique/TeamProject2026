@@ -8,8 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     // --- Declare Variables ---
     [Header("Player Movement")]
-    public float speed = 10f;
+    public float speed = 15f;
     private Vector3 move;
+
+    public float slideSpeed;
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
 
     public bool sliding;
 
@@ -34,17 +38,12 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
-    public MovementState state;
-    public enum MovementState
-    {
-        moveing,
-        sliding,
-        air
-    }
+    
     void Awake()
     {
         // Grab the Ridgidbody Component at the start of the game
         rb = GetComponent<Rigidbody>();
+        desiredMoveSpeed = speed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,11 +55,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Speed;" + rb.linearVelocity.magnitude);
         // Check if the player is grounded
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, isGround);
+        JumpReset();
 
         Inputs();
-        SpeedControl();
 
         // Handle the drag
         if (isGrounded)
@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerMove();
+        SpeedControl();
     }
 
     void Inputs()
@@ -82,8 +83,6 @@ public class PlayerController : MonoBehaviour
         {
             ableToJump = false;
             Jump();
-
-            Invoke(nameof(JumpReset), jumpCooldown);
         }
     }
 
@@ -98,24 +97,27 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(GetSlopeDirection(move) * speed * 20f, ForceMode.Force);
 
-            if (rb.linearVelocity.y > 0)
+            if (rb.linearVelocity.y < 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
-
+        
         // on ground
-        else if (isGrounded)
+        if (isGrounded)
             rb.AddForce(move * speed * 10f, ForceMode.Force);
 
         // in air
-        else if (!isGrounded)
+        else
             rb.AddForce(move * speed * 10f * airMultiplier, ForceMode.Force);
     }
-
+    
     // Player Speed Control function called every frame
     void SpeedControl()
     {
+        // Exit the function when we are sliding
+        if (sliding) return;
+
         // Limit slope speed
-        if (OnSlope() && !exitSlop)
+        else if (OnSlope() && !exitSlop)
         {
             if (rb.linearVelocity.magnitude > speed)
                 rb.linearVelocity = rb.linearVelocity.normalized * speed;
@@ -147,9 +149,11 @@ public class PlayerController : MonoBehaviour
     }
     void JumpReset()
     {
-        ableToJump = true;
-
-        exitSlop = false;
+        if (!ableToJump && isGrounded)
+        {
+            ableToJump = true;
+            exitSlop = false;
+        } 
     }
     
     // Slope Control

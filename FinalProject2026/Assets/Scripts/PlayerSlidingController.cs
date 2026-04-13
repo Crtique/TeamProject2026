@@ -11,14 +11,9 @@ public class PlayerSlidingController : MonoBehaviour
 
     [Header("Sliding")]
     public float slideForce;
-    public float maxSlideTime;
-    private float slideTimer;
 
     public float slidingHeight;
     private float startingHeight;
-
-    // --- Inputs ---
-    private float horizontal;
 
     private void Awake()
     {
@@ -36,14 +31,11 @@ public class PlayerSlidingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
         // If the key is down and the player is grounded then slide
         if (Input.GetKeyDown(KeyCode.LeftControl))
             StartSlide();
         if (Input.GetKeyUp(KeyCode.LeftControl) && player.sliding )
             StopSlide();
-
     }
     private void FixedUpdate()
     {
@@ -62,7 +54,8 @@ public class PlayerSlidingController : MonoBehaviour
     void SlidingMovement()
     {
         // Slinding direction based on the players Input
-        Vector3 slidingDirection = Vector3.right * horizontal;
+        Vector3 slidingDirection = -Vector3.right;
+
         // Normal Sliding
         if (!player.OnSlope() || rb.linearVelocity.y > -0.1f)
         {
