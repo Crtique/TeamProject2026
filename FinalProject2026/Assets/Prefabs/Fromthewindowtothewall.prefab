@@ -58,7 +58,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bbf0fcd7289b3e8409726b1ac2739c3f, type: 3}
       propertyPath: m_Name
-      value: WindowWallScaled
+      value: Fromthewindowtothewall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bbf0fcd7289b3e8409726b1ac2739c3f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305611551656725180, guid: bbf0fcd7289b3e8409726b1ac2739c3f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
