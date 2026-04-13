@@ -146,7 +146,6 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
-        playerAnim.SetTrigger("Jumping");
     }
     void JumpReset()
     {
