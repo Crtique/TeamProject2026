@@ -11,10 +11,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 15f;
     private Vector3 move;
 
-    public float slideSpeed;
-    private float desiredMoveSpeed;
-    private float lastDesiredMoveSpeed;
-
     public bool sliding;
 
     [Header("Jumping Control")]
@@ -32,30 +28,29 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     [Header("Slope Control")]
-    public float slopeAngle;
+    const float slopeAngle = 45f;
     private RaycastHit slopeHit;
     private bool exitSlop;
 
     // --- Declare Components ---
     private Rigidbody rb;
-    
+
     void Awake()
     {
         // Grab the Ridgidbody Component at the start of the game
         rb = GetComponent<Rigidbody>();
-        desiredMoveSpeed = speed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Speed;" + rb.linearVelocity.magnitude);
+        Debug.Log("Speed:" + rb.linearVelocity.magnitude);
         // Check if the player is grounded
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, isGround);
         JumpReset();
@@ -89,7 +84,7 @@ public class PlayerController : MonoBehaviour
     // Player Movement Function called every fixed frame
     void PlayerMove()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal"); 
+        float horizontal = Input.GetAxisRaw("Horizontal");
 
         move = transform.right * horizontal;
 
@@ -100,7 +95,7 @@ public class PlayerController : MonoBehaviour
             if (rb.linearVelocity.y < 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
-        
+
         // on ground
         if (isGrounded)
             rb.AddForce(move * speed * 10f, ForceMode.Force);
@@ -109,7 +104,7 @@ public class PlayerController : MonoBehaviour
         else
             rb.AddForce(move * speed * 10f * airMultiplier, ForceMode.Force);
     }
-    
+
     // Player Speed Control function called every frame
     void SpeedControl()
     {
@@ -153,9 +148,9 @@ public class PlayerController : MonoBehaviour
         {
             ableToJump = true;
             exitSlop = false;
-        } 
+        }
     }
-    
+
     // Slope Control
     public bool OnSlope()
     {
