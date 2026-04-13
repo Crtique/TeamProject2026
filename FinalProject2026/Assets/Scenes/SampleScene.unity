@@ -218,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138318873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Modular Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2966,6 +2966,10 @@ Transform:
 --- !u!1001 &1853838968
 PrefabInstance:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949843972}
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
