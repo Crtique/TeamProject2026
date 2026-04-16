@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     // --- Declare Variables ---
     [Header("Player Movement")]
-    public float speed = 15f;
+    public float moveSpeed = 10f;
+    public float slideSpeed = 40;
+
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
+
     private Vector3 move;
 
     public bool sliding;
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (OnSlope() && !exitSlop)
         {
-            rb.AddForce(GetSlopeDirection(move) * speed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeDirection(move).normalized * moveSpeed * 20f, ForceMode.Force);
 
             if (rb.linearVelocity.y < 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
@@ -98,24 +103,32 @@ public class PlayerController : MonoBehaviour
 
         // on ground
         if (isGrounded)
-            rb.AddForce(move * speed * 10f, ForceMode.Force);
+            rb.AddForce(move.normalized * moveSpeed * 10f, ForceMode.Force);
 
         // in air
         else
-            rb.AddForce(move * speed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(move.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
 
     // Player Speed Control function called every frame
     void SpeedControl()
     {
-        // Exit the function when we are sliding
-        if (sliding) return;
+
+        // When player is sliding check if they are on a slope if not set the desiredSpeed to Speed
+        if (sliding)
+        {
+            if (OnSlope() && rb.linearVelocity.y < 0.1f)
+                desiredMoveSpeed = slideSpeed;
+            else
+                desiredMoveSpeed = moveSpeed;
+
+        }
 
         // Limit slope speed
         else if (OnSlope() && !exitSlop)
         {
-            if (rb.linearVelocity.magnitude > speed)
-                rb.linearVelocity = rb.linearVelocity.normalized * speed;
+            if (rb.linearVelocity.magnitude > moveSpeed)
+                rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
         }
         // Limit speed on ground or in the air
         else
@@ -123,13 +136,39 @@ public class PlayerController : MonoBehaviour
             Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
             // Limit the velocity if need be
-            if (flatVel.magnitude > speed)
+            if (flatVel.magnitude > moveSpeed)
             {
-                Vector3 limitedVel = flatVel.normalized * speed;
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
                 rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
             }
         }
+        
+        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(SmoothLerpMoveSpeed());
+        }
+        else
+        {
+            desiredMoveSpeed = moveSpeed;
+        }
 
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+
+    }
+
+    // Smooth out the speed over time
+    private IEnumerator SmoothLerpMoveSpeed()
+    {
+        float time = 0;
+        float differenece = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startSpeed = moveSpeed;
+        while(time < differenece)
+        {
+            moveSpeed = Mathf.Lerp(startSpeed, desiredMoveSpeed, time / differenece);
+            yield return null;
+        }
+        moveSpeed = desiredMoveSpeed;
     }
 
     // Jump Function called every frame
