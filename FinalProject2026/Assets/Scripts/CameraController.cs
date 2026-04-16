@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     public Vector3 offset = new Vector3(-5, 2, -10f); //where the camera is in relation to the player
     public Vector3 velocity = new Vector3(0, 0, 0);
     public float speed = .2f;
+    public float minY;
     void Start()
     {
         transform.position = new Vector3(playerRB.transform.position.x + offset.x, playerRB.transform.position.y + offset.y, offset.z);
@@ -15,8 +16,14 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        //moves the camera to where the player is (with an offset) with dammpening
-        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(playerRB.transform.position.x + offset.x, playerRB.transform.position.y + offset.y, offset.z), ref velocity, speed);
+
+        if(playerRB.transform.position.y <= minY) { //checks if the player is lower than minY
+            //moves the camera to where the player is (with an offset + at minY instead of the player's location) with dampening
+            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(playerRB.transform.position.x + offset.x, minY + offset.y, offset.z), ref velocity, speed);
+        } else {
+            //moves the camera to where the player is (with an offset) with dampening
+            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(playerRB.transform.position.x + offset.x, playerRB.transform.position.y + offset.y, offset.z), ref velocity, speed);
+        }
         //sets the camera's velocity to 0 when it has come to a stop but still has an extremely low velocity
         if (velocity.magnitude < 0.0001) {
             velocity = new Vector3(0, 0, 0);
