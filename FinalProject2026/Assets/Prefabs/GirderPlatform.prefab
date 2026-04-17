@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.386738
+      value: -29.386738
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,9 +48,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2074902176012153538, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
       propertyPath: m_Name
       value: GirderPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6279104868655958831, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
       propertyPath: m_LocalScale.x
@@ -87,6 +95,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2401491164654012443}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5844618335836333763}
   m_SourcePrefab: {fileID: 100100000, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
 --- !u!1 &1364705310764840680 stripped
 GameObject:
@@ -109,6 +120,27 @@ MonoBehaviour:
   speed: 1
   pointer: 0
   startMoveWhenPlayer: 0
+--- !u!65 &5844618335836333763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364705310764840680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 904.98, y: 170.84, z: 450.2}
+  m_Center: {x: -0.00005341135, y: 7.11, z: 51.7}
 --- !u!4 &1854278615199018066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8bcc244af3a1f7c4181cdf093208fc17, type: 3}
@@ -177,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 58cd5732d4099a34590d120df562eb5b, type: 3}
       propertyPath: m_Name
       value: Girder
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 58cd5732d4099a34590d120df562eb5b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
