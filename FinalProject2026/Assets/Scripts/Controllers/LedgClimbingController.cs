@@ -15,6 +15,14 @@ public class LedgClimbingController : MonoBehaviour
 
     public bool isOnLedge;
 
+    [Header("Ledge Jumping")]
+    public float ledgeJumpUpwardForce;
+
+    [Header("Exiting")]
+    public bool exitLedge;
+    public float exitLedgeTime;
+    private float exitLedgeTimer;
+
     [Header("Ledge Checks")]
     public float ledgeCheckLength;
     public float ledgeSphereCastRadius;
@@ -31,12 +39,6 @@ public class LedgClimbingController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = GetComponent<PlayerController>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -44,8 +46,10 @@ public class LedgClimbingController : MonoBehaviour
         StateMachine();
     }
 
+
     private void StateMachine()
     {
+        // -- Declare Inputs --
         float horizontal = Input.GetAxisRaw("Horizontal");
         bool anyInputKeyPressed = horizontal != 0;
 
@@ -54,12 +58,33 @@ public class LedgClimbingController : MonoBehaviour
         {
             FreezeRidgidbodyOnLedge();
 
+            // increase the time while on the ledge
             currentTimeOnLedge += Time.deltaTime;
 
+            // When our time on the ledge is higher than minimum time and we have pressed any of out keys (A and D)
+            // Exit the ledge
             if (currentTimeOnLedge > minTimeOnLedge && anyInputKeyPressed)
                 ExitLedgeHold();
+
+            // When the space key is pressed Jump off the ledge upwards
+            if (Input.GetKeyDown(KeyCode.Space))
+                LedgeJump();
         }
+
+        // Exit Ledge
+        else if (exitLedge)
+        {
+            // When the timer is greater than zero count it down
+            if (exitLedgeTimer > 0)
+                exitLedgeTimer -= Time.deltaTime;
+            
+            // if not set we havent exited the ledge
+            else
+                exitLedge = false;
+        }
+
     }
+
 
     private void LedgeDetection()
     {
@@ -73,9 +98,32 @@ public class LedgClimbingController : MonoBehaviour
         float distanceToLedge = Vector3.Distance(transform.position, ledgeHit.transform.position);
         if (ledgeHit.transform == lastLedge) return;
 
+        // Check if the distance is less than out maximum distance and if we are not on a ledge
+        // if so enter the ledge holding function
         if (distanceToLedge < maxLedgeGrabDistance && !isOnLedge)
             EnterLedgeHold();
     }
+
+
+    private void LedgeJump()
+    {
+        ExitLedgeHold();
+
+        // Delay the jump force by 0.05 seconds
+        Invoke(nameof(DeleyJumpForce), 0.05f);
+    }
+    private void DeleyJumpForce()
+    {
+        // Multiply the jumpforce to move the player up on the Y axis 
+        Vector3 forceToAdd = Vector3.up * ledgeJumpUpwardForce;
+
+        // Reset the players velocity
+        rb.linearVelocity = Vector3.zero;
+
+        // Add the Force so that the player jump upward while on a ledge
+        rb.AddForce(forceToAdd, ForceMode.Impulse);
+    }
+
 
     private void EnterLedgeHold()
     {
@@ -93,6 +141,7 @@ public class LedgClimbingController : MonoBehaviour
         rb.useGravity = false;
         rb.linearVelocity = Vector3.zero;
     }
+
 
     private void FreezeRidgidbodyOnLedge()
     {
@@ -121,19 +170,33 @@ public class LedgClimbingController : MonoBehaviour
             ExitLedgeHold();
     }
 
+
     private void ExitLedgeHold()
     {
+        // exit the ledge
+        exitLedge = true;
+
+        // Start the ledge timer
+        exitLedgeTimer = exitLedgeTime;
+
+        // no longer on the ledge
         isOnLedge = false;
+
+        // reset the ledge time
         currentTimeOnLedge = 0f;
 
+        // freeze, and restrict are disable
         player.restricted = false;
         player.freeze = false;
 
+        // reanble the players gravity
         rb.useGravity = true;
 
+        // set a delay of 1 seconed to rest the ledge
         StopAllCoroutines();
         Invoke(nameof(ResetLastLedge), 1f);
     }
+
 
     private void ResetLastLedge()
     {

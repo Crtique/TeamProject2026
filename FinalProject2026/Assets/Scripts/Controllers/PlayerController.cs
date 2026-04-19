@@ -7,6 +7,12 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     // --- Declare Variables ---
+    public bool freeze;
+    public bool unlimited;
+    public bool restricted;
+    public bool sliding;
+    [Space]
+
     [Header("Player Movement")]
     public float moveSpeed = 10f;
     public float slideSpeed = 40;
@@ -15,8 +21,6 @@ public class PlayerController : MonoBehaviour
     private float lastDesiredMoveSpeed;
 
     private Vector3 move;
-
-    public bool sliding;
 
     [Header("Jumping Control")]
     public float jumpHeight = 20f;
@@ -40,9 +44,7 @@ public class PlayerController : MonoBehaviour
     // --- Declare Components ---
     private Rigidbody rb;
 
-    public bool freeze;
-    public bool unlimited;
-    public bool restricted;
+    
 
     void Awake()
     {

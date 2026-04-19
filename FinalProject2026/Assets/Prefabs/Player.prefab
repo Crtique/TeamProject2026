@@ -154,10 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438674fbc74cafc44bb8f941670b5901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freeze: 0
+  unlimited: 0
+  restricted: 0
+  sliding: 0
   moveSpeed: 10
   slideSpeed: 0
-  sliding: 0
-  jumpHeight: 9
+  jumpHeight: 10
   jumpCooldown: 5
   airMultiplier: 1
   gDrag: 3
@@ -165,9 +168,6 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 8
-  freeze: 0
-  unlimited: 0
-  restricted: 0
 --- !u!114 &6171562906730037795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +199,9 @@ MonoBehaviour:
   maxLedgeGrabDistance: 2
   minTimeOnLedge: 0.5
   isOnLedge: 0
+  ledgeJumpUpwardForce: 10
+  exitLedge: 0
+  exitLedgeTime: 0.2
   ledgeCheckLength: 3
   ledgeSphereCastRadius: 0.5
   isLedge:
