@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
+        FacingMovementDirection(horizontal);
+
         move = transform.right * horizontal;
 
         if (OnSlope() && !exitSlop)
@@ -226,5 +228,16 @@ public class PlayerController : MonoBehaviour
     public Vector3 GetSlopeDirection(Vector3 move)
     {
         return Vector3.ProjectOnPlane(move, slopeHit.normal).normalized;
+    }
+
+    // sets the player's rotation to be in line with the direction of movement
+    // function made by Autumn
+    public void FacingMovementDirection(float direction)
+    {
+        if (direction > 0) {
+            transform.localScale = new Vector3(1, 1, 1);
+        } else if (direction < 0) {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }
