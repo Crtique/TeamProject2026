@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
     // --- Declare Components ---
     private Rigidbody rb;
 
+    public bool freeze;
+    public bool unlimited;
+    public bool restricted;
+
     void Awake()
     {
         // Grab the Ridgidbody Component at the start of the game
@@ -55,7 +59,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Speed:" + rb.linearVelocity.magnitude);
         // Check if the player is grounded
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, isGround);
         JumpReset();
@@ -67,6 +70,15 @@ public class PlayerController : MonoBehaviour
             rb.linearDamping = gDrag;
         else
             rb.linearDamping = 0;
+
+        if (freeze)
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
+        else if (unlimited)
+        {
+            return;
+        }
     }
 
     // FixedUpdate is called every fixed frame
@@ -89,6 +101,8 @@ public class PlayerController : MonoBehaviour
     // Player Movement Function called every fixed frame
     void PlayerMove()
     {
+        if (restricted) return;
+
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         move = transform.right * horizontal;

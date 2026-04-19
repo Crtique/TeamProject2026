@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3027186350504737572}
   - component: {fileID: 8723792693131130955}
   - component: {fileID: 6171562906730037795}
+  - component: {fileID: 8663678781461897837}
   - component: {fileID: 5267959659758766401}
   m_Layer: 0
   m_Name: Player
@@ -164,6 +165,9 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 8
+  freeze: 0
+  unlimited: 0
+  restricted: 0
 --- !u!114 &6171562906730037795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +183,27 @@ MonoBehaviour:
   playerObj: {fileID: 2025069231706506057}
   slideForce: 200
   slidingHeight: 0.5
+--- !u!114 &8663678781461897837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316960010008434573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45926257fa76e8c4587051d674da7efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveToLedgeSpeed: 12
+  maxLedgeGrabDistance: 2
+  minTimeOnLedge: 0.5
+  isOnLedge: 0
+  ledgeCheckLength: 3
+  ledgeSphereCastRadius: 0.5
+  isLedge:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &5267959659758766401
 MonoBehaviour:
   m_ObjectHideFlags: 0
