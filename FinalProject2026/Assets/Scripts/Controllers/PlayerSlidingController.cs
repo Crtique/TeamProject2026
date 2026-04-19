@@ -54,7 +54,7 @@ public class PlayerSlidingController : MonoBehaviour
     void SlidingMovement()
     {
         // Slinding direction based on the players Input
-        Vector3 slidingDirection = -Vector3.right;
+        Vector3 slidingDirection = transform.right; // direction
 
         // Normal Sliding
         if (!player.OnSlope() || rb.linearVelocity.y > -0.1f)

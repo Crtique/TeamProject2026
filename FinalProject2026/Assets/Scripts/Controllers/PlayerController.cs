@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [Header("Player Movement")]
-    public float moveSpeed = 10f;
+    public float moveSpeed  = 10f;
     public float slideSpeed = 40;
 
     private float desiredMoveSpeed;
@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 move;
 
     [Header("Jumping Control")]
-    public float jumpHeight = 20f;
-    public float jumpCooldown = 5f;
+    public float jumpHeight    = 20f;
+    public float jumpCooldown  = 5f;
     public float airMultiplier = 3;
     private bool ableToJump;
 
@@ -107,9 +107,15 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        FacingMovementDirection(horizontal);
+        move = new Vector3(horizontal, 0f, 0f).normalized;
 
-        move = transform.right * horizontal;
+        // Move player Right
+        if (horizontal > 0f)
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+
+        // Move player Left
+        else if (horizontal < 0f)
+            transform.eulerAngles = new Vector3(0f, 180f, 0f);
 
         if (OnSlope() && !exitSlop)
         {
@@ -228,16 +234,5 @@ public class PlayerController : MonoBehaviour
     public Vector3 GetSlopeDirection(Vector3 move)
     {
         return Vector3.ProjectOnPlane(move, slopeHit.normal).normalized;
-    }
-
-    // sets the player's rotation to be in line with the direction of movement
-    // function made by Autumn
-    public void FacingMovementDirection(float direction)
-    {
-        if (direction > 0) {
-            transform.localScale = new Vector3(1, 1, 1);
-        } else if (direction < 0) {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
 }
