@@ -49,10 +49,6 @@ public class LedgClimbingController : MonoBehaviour
 
     private void StateMachine()
     {
-        // -- Declare Inputs --
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        bool anyInputKeyPressed = horizontal != 0;
-
         // Holding onto the ledge
         if (isOnLedge)
         {
@@ -61,9 +57,8 @@ public class LedgClimbingController : MonoBehaviour
             // increase the time while on the ledge
             currentTimeOnLedge += Time.deltaTime;
 
-            // When our time on the ledge is higher than minimum time and we have pressed any of out keys (A and D)
             // Exit the ledge
-            if (currentTimeOnLedge > minTimeOnLedge && anyInputKeyPressed)
+            if (currentTimeOnLedge > minTimeOnLedge && Input.GetKeyDown(KeyCode.Space)) // When our time on the ledge is higher than minimum time and we have pressed the Jump key
                 ExitLedgeHold();
 
             // When the space key is pressed Jump off the ledge upwards
