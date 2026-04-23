@@ -17,8 +17,13 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (!startMoveWhenPlayer) {
-            oldPOS=transform.localPosition;
+            oldPOS = transform.localPosition;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, waypoints[pointer], speed * Time.deltaTime);
             if (player != null) {
                 player.transform.localPosition += Vector3.MoveTowards(oldPOS, waypoints[pointer], speed * Time.deltaTime) - oldPOS;
@@ -27,14 +32,8 @@ public class MovingPlatform : MonoBehaviour
                 updateWaypoint();
             }
         }
-        
     }
-
-    private void FixedUpdate()
-    {
-        
-    }
-
+    
     private void updateWaypoint()
     {
         pointer++;
@@ -52,7 +51,10 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        player = other.gameObject;
+        if (other.tag == "Player") {
+            startMoveWhenPlayer = false;
+            player = other.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider other)
