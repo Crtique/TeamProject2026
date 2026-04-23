@@ -151,7 +151,7 @@ public class LedgClimbingController : MonoBehaviour
         if (distanceToLedge > 1f)
         {
             if (rb.linearVelocity.magnitude < moveToLedgeSpeed)
-                rb.AddForce(directionToLedge.normalized * moveToLedgeSpeed * 1000f * Time.deltaTime);
+                rb.AddForce(1000f * moveToLedgeSpeed * Time.deltaTime * directionToLedge.normalized);
         }
 
         // Hold onto ledge
