@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
-    public Animator anim;
+    //public Animator anim;
 
     // -- Animation bools --
-    bool isRunning;
-    bool isJumping;
+    //bool isRunning;
+    //bool isJumping;
 
     void Awake()
     {
@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         // -- Declare Animations --
 
-        anim.SetBool("isRunning", isRunning);
-        anim.SetBool("isJumping", isJumping);
+        //anim.SetBool("isRunning", isRunning);
+        //anim.SetBool("isJumping", isJumping);
 
         // ------------------------
 
@@ -95,13 +95,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             ableToJump = false;
-            isJumping = true;
+            //isJumping = true;
             Jump();
         }
+        /*
         else
         {
             isJumping = false;
         }
+        */
     }
 
     // Player Movement Function called every fixed frame
@@ -110,6 +112,8 @@ public class PlayerController : MonoBehaviour
         // When the player is on a ledge exit this function
         if (restricted) return;
 
+
+/*
         // Moving Animation
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
@@ -119,7 +123,9 @@ public class PlayerController : MonoBehaviour
         {
             isRunning = false;
         }
-        
+*/  
+
+
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         move = new Vector3(horizontal, 0f, 0f).normalized;

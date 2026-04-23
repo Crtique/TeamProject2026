@@ -2022,6 +2022,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1438264932}
     m_Modifications:
+    - target: {fileID: 44795675442559160, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997592190655528870, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997592190655528870, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4403299378270131219, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.093733
@@ -2033,6 +2045,10 @@ PrefabInstance:
     - target: {fileID: 4403299378270131219, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.7178366
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079544813616349687, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.728
       objectReference: {fileID: 0}
     - target: {fileID: 6144687966517799993, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2079,7 +2095,8 @@ PrefabInstance:
       value: RoofPyramidWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2648401731077106731, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55737ee69db9ceb4dba984fb49b4273d, type: 3}
@@ -10649,6 +10666,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6254411359819800395, guid: da88e0c79e77453439efe1f7e5a9ac93, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7428062
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254411359819800395, guid: da88e0c79e77453439efe1f7e5a9ac93, type: 3}
+      propertyPath: m_Size.z
+      value: 0.60670716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254411359819800395, guid: da88e0c79e77453439efe1f7e5a9ac93, type: 3}
+      propertyPath: m_Center.x
+      value: 0.37140316
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254411359819800395, guid: da88e0c79e77453439efe1f7e5a9ac93, type: 3}
+      propertyPath: m_Center.z
+      value: -0.1966465
+      objectReference: {fileID: 0}
     - target: {fileID: 7401890214211628218, guid: da88e0c79e77453439efe1f7e5a9ac93, type: 3}
       propertyPath: m_Name
       value: GrabLedge
@@ -10781,7 +10814,7 @@ PrefabInstance:
       objectReference: {fileID: 735129325}
     - target: {fileID: 8723792693131130955, guid: d5e1eed53270995468736f179485aa15, type: 3}
       propertyPath: jumpHeight
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17523,6 +17556,10 @@ PrefabInstance:
     - target: {fileID: 4403083752734976780, guid: 760e0cd5bd6f05c4fa40c6b208e44412, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843725104924639460, guid: 760e0cd5bd6f05c4fa40c6b208e44412, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
