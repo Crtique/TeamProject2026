@@ -57,6 +57,7 @@ public class LedgClimbingController : MonoBehaviour
             // increase the time while on the ledge
             currentTimeOnLedge += Time.deltaTime;
 
+
             // Exit the ledge
             if (currentTimeOnLedge > minTimeOnLedge && Input.GetKeyDown(KeyCode.Space)) // When our time on the ledge is higher than minimum time and we have pressed the Jump key
                 ExitLedgeHold();
@@ -83,8 +84,11 @@ public class LedgClimbingController : MonoBehaviour
 
     private void LedgeDetection()
     {
+        // Detect the direction of what ledge we are facing
+        Vector3 ledgeGrabDirection = transform.right;
+
         // Create a sphere to where the ledge is when the player is facing forwards
-        bool ledgeDetect = Physics.SphereCast(transform.position, ledgeSphereCastRadius, Vector3.right, out ledgeHit, ledgeCheckLength, isLedge);
+        bool ledgeDetect = Physics.SphereCast(transform.position, ledgeSphereCastRadius, ledgeGrabDirection, out ledgeHit, ledgeCheckLength, isLedge);
         
         // If you can't find the ledge then leave the function
         if (!ledgeDetect) return;

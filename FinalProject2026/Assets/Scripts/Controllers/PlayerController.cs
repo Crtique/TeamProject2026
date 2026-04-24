@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     [Header("Slope Control")]
-    const float slopeAngle = 45f;
+    const float slopeAngle = 75f;
     private RaycastHit slopeHit;
     private bool exitSlop;
 
