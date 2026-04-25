@@ -7877,6 +7877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GirderBeam (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7272453459107771201, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8045435883733494267, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -8455,6 +8459,10 @@ PrefabInstance:
     - target: {fileID: 7272453459107771201, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
       propertyPath: m_Name
       value: GirderBeam (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272453459107771201, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8045435883733494267, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -13454,6 +13462,26 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1].z
       value: 12.65326
       objectReference: {fileID: 0}
+    - target: {fileID: 3002314328854417829, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209201238255510413, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731981837937843641, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436416769142644370, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588770002866041012, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9008737028391257735, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -16974,7 +17002,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1316960010008434573, guid: d5e1eed53270995468736f179485aa15, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 2019891603}
   m_SourcePrefab: {fileID: 100100000, guid: d5e1eed53270995468736f179485aa15, type: 3}
 --- !u!4 &917356579 stripped
 Transform:
@@ -18979,6 +19010,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GirderBeam (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7272453459107771201, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8045435883733494267, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -20019,6 +20054,10 @@ PrefabInstance:
     - target: {fileID: 7272453459107771201, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
       propertyPath: m_Name
       value: GirderBeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272453459107771201, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8045435883733494267, guid: 648034a59c2f22042b3d924dd95129e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -34625,6 +34664,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4403083752734976780, guid: 760e0cd5bd6f05c4fa40c6b208e44412, type: 3}
   m_PrefabInstance: {fileID: 125299310}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2019891595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1316960010008434573, guid: d5e1eed53270995468736f179485aa15, type: 3}
+  m_PrefabInstance: {fileID: 913824059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019891603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019891595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5bc39f41a44bf429b597e465656d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHeight: 2.5
 --- !u!1001 &2021893475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37421,6 +37478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GirderPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 1364705310764840680, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1854278615199018066, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.50569
@@ -37460,6 +37521,30 @@ PrefabInstance:
     - target: {fileID: 1854278615199018066, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002314328854417829, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209201238255510413, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731981837937843641, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436416769142644370, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588770002866041012, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008737028391257735, guid: 98da062d3b1803e4d830904a7ec74931, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

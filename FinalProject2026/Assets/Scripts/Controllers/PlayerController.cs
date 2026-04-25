@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
+    private PlatformDetection plat;
     //public Animator anim;
 
     // -- Animation bools --
