@@ -37,8 +37,6 @@ public class LedgClimbingController : MonoBehaviour
 
 
     // -- Declare Ledge Animation Bools --
-    bool onLedge;
-    bool offLedge;
 
     private void Awake()
     {
@@ -50,13 +48,6 @@ public class LedgClimbingController : MonoBehaviour
     {
         LedgeDetection();
         StateMachine();
-    }
-
-    // -- Declare Animations Function --
-    void Animation()
-    {
-        ledgeAnim.SetBool("onLedge", onLedge);
-        ledgeAnim.SetBool("offLedge", offLedge);
     }
 
     private void StateMachine()
@@ -77,7 +68,10 @@ public class LedgClimbingController : MonoBehaviour
             // When the space key is pressed Jump off the ledge upwards
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                ledgeAnim.SetTrigger("hangJump");
+                player.isFalling = true;
                 LedgeJump();
+
             }
         }
 
@@ -142,6 +136,8 @@ public class LedgClimbingController : MonoBehaviour
     {
         // Set isOnLedge to True when we are ledge holding
         isOnLedge = true;
+
+        ledgeAnim.SetTrigger("isHanging");
 
         player.unlimited = true;
         player.restricted = true;
