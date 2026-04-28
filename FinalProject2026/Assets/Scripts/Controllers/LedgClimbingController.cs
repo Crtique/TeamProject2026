@@ -13,7 +13,7 @@ public class LedgClimbingController : MonoBehaviour
     public float minTimeOnLedge;
     private float currentTimeOnLedge;
 
-    public bool isOnLedge;
+    public bool isOnLedge { get; private set; }
 
     [Header("Ledge Jumping")]
     public float ledgeJumpUpwardForce;
@@ -33,6 +33,12 @@ public class LedgClimbingController : MonoBehaviour
 
     private RaycastHit ledgeHit;
 
+    public Animator ledgeAnim;
+
+
+    // -- Declare Ledge Animation Bools --
+    bool onLedge;
+    bool offLedge;
 
     private void Awake()
     {
@@ -46,6 +52,12 @@ public class LedgClimbingController : MonoBehaviour
         StateMachine();
     }
 
+    // -- Declare Animations Function --
+    void Animation()
+    {
+        ledgeAnim.SetBool("onLedge", onLedge);
+        ledgeAnim.SetBool("offLedge", offLedge);
+    }
 
     private void StateMachine()
     {
@@ -64,7 +76,9 @@ public class LedgClimbingController : MonoBehaviour
 
             // When the space key is pressed Jump off the ledge upwards
             if (Input.GetKeyDown(KeyCode.Space))
+            {
                 LedgeJump();
+            }
         }
 
         // Exit Ledge
@@ -73,7 +87,7 @@ public class LedgClimbingController : MonoBehaviour
             // When the timer is greater than zero count it down
             if (exitLedgeTimer > 0)
                 exitLedgeTimer -= Time.deltaTime;
-            
+
             // if not set we havent exited the ledge
             else
                 exitLedge = false;

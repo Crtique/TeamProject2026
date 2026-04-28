@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd4c9eac9cc1ba841a19f28a4d736b5b
+guid: 50e32240cbb85df469e58ebb3d7c95ea
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,10 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'joint4' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -34,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Jump
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 1
@@ -265,131 +262,131 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: charIdleRE(Clone)
+    - name: charJumpRE(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: PlayerModel
-      parentName: charIdleRE(Clone)
+      parentName: charJumpRE(Clone)
       position: {x: -0, y: 0.6782527, z: 0.0623771}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 67.64084, y: 67.64084, z: 67.64084}
     - name: Root
-      parentName: charIdleRE(Clone)
-      position: {x: 0.0020199402, y: 1.1258994, z: 0.021594707}
+      parentName: charJumpRE(Clone)
+      position: {x: 0.0020199402, y: 1.1258996, z: 0.021594707}
       rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
       scale: {x: 1.0000002, y: 1.0000002, z: 1}
     - name: joint2
       parentName: Root
       position: {x: -0.24279146, y: 0, z: 0}
-      rotation: {x: -0, y: -0.0045870123, z: -0, w: 0.99998945}
-      scale: {x: 1.0000004, y: 1.0000005, z: 1}
+      rotation: {x: -0, y: -0.0045870324, z: -0, w: 0.99998945}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1}
     - name: Sternu
       parentName: joint2
       position: {x: -0.29082838, y: -2.7755575e-19, z: 5.390133e-16}
-      rotation: {x: -2.7340724e-10, y: -0.0054116123, z: -0.000000059604016, w: 0.9999854}
-      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
+      rotation: {x: -2.7340843e-10, y: -0.005411597, z: -0.000000059604016, w: 0.9999854}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
     - name: joint4
       parentName: Sternu
       position: {x: -0.13342857, y: -2.7755575e-19, z: -4.2604807e-16}
-      rotation: {x: 0.99995005, y: 0.000000059604645, z: -0.009998501, w: 0}
-      scale: {x: 1.0000004, y: 0.99999994, z: 1.0000002}
+      rotation: {x: 0.99995005, y: 0.000000059604645, z: -0.009998505, w: 0}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1.0000006}
     - name: joint5
       parentName: joint4
       position: {x: -0.06670095, y: -1.7780185e-32, z: 1.4543921e-16}
-      rotation: {x: -0.000000022235323, y: -0.0033678594, z: -0, w: 0.99999434}
-      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+      rotation: {x: 9.71445e-17, y: -0.0033678743, z: 3.5527133e-15, w: 0.99999434}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: joint6
       parentName: joint5
       position: {x: -0.072959304, y: -2.7755575e-19, z: -1.2628092e-15}
-      rotation: {x: -0.000000015817639, y: 0.6957999, z: 0.00000004532719, w: -0.71823573}
-      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+      rotation: {x: 1.0036793e-10, y: -0.6957998, z: 0.000000029802152, w: 0.7182358}
+      scale: {x: 1, y: 1.0000001, z: 1}
     - name: joint7
       parentName: joint6
       position: {x: -0.13922381, y: 1.7208457e-17, z: -6.4392934e-17}
-      rotation: {x: -0, y: -0, z: -1.7763568e-15, w: 1}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+      rotation: {x: 1.7832955e-15, y: -0, z: 2.983724e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: L_Shoulder
       parentName: Sternu
       position: {x: -0.017248845, y: -0.26790774, z: 0.014499892}
-      rotation: {x: 0.010277869, y: 0.001006522, z: 0.6299973, w: 0.7765287}
-      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+      rotation: {x: 0.0102778515, y: 0.0010065073, z: 0.62999713, w: 0.77652884}
+      scale: {x: 0.9999997, y: 0.99999994, z: 1.0000001}
     - name: L_Elbow
       parentName: L_Shoulder
       position: {x: -0.31657284, y: -0.0910728, z: 0.0020909742}
-      rotation: {x: 0.0000000018626449, y: 0.013927457, z: 0.000000020503647, w: 0.999903}
-      scale: {x: 0.9999997, y: 0.9999998, z: 1.0000008}
+      rotation: {x: -0, y: 0.013927415, z: 0.000000021682352, w: 0.999903}
+      scale: {x: 0.9999998, y: 1.0000001, z: 1.0000006}
     - name: L_Wrist
       parentName: L_Elbow
       position: {x: -0.3128128, y: -0.055816837, z: -0.00014831872}
-      rotation: {x: 0.000000022296895, y: -0.0023021414, z: 7.0420947e-10, w: 0.9999974}
-      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+      rotation: {x: -9.823589e-10, y: -0.0023020976, z: 7.3690366e-11, w: 0.9999974}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
     - name: L_Hand
       parentName: L_Wrist
       position: {x: -0.22495985, y: -0.06984026, z: -2.7822269e-15}
-      rotation: {x: -0, y: -0, z: 1.0408338e-17, w: 1}
-      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+      rotation: {x: -0, y: -0, z: 3.2526057e-18, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
     - name: R_Shoulder
       parentName: Sternu
       position: {x: -0.017249709, y: 0.26386806, z: 0.014499955}
-      rotation: {x: 0.63000035, y: 0.77652615, z: -0.010277921, w: -0.0010065654}
-      scale: {x: 0.99999946, y: 1.0000001, z: 1.0000002}
+      rotation: {x: 0.6300003, y: 0.7765262, z: -0.0102778915, w: -0.0010065519}
+      scale: {x: 0.99999934, y: 1.0000001, z: 1.0000004}
     - name: R_Elbow
       parentName: R_Shoulder
       position: {x: 0.31657267, y: 0.091070004, z: -0.0020908942}
-      rotation: {x: 0.000000014202666, y: 0.013927417, z: 0.00000011920926, w: 0.9999031}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000004}
+      rotation: {x: 0.000000026542686, y: 0.013927406, z: -0, w: 0.9999031}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1}
     - name: R_Wrist
       parentName: R_Elbow
       position: {x: 0.31281245, y: 0.055820998, z: 0.00014824698}
-      rotation: {x: 9.550776e-10, y: -0.0023020492, z: -0.000000029758892, w: 0.99999744}
-      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000005}
+      rotation: {x: -0.000000012339604, y: -0.0023020664, z: -1.10766396e-10, w: 0.9999974}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000007}
     - name: R_Hand
       parentName: R_Wrist
       position: {x: 0.2249573, y: 0.06984, z: 0.00000006175804}
-      rotation: {x: -0, y: -0, z: -4.937455e-16, w: 1}
-      scale: {x: 0.9999997, y: 0.99999994, z: 0.99999994}
+      rotation: {x: -0, y: -0, z: -3.4694457e-18, w: 1}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000007}
     - name: L_Thigh
       parentName: Root
       position: {x: 0.04314672, y: -0.17827283, z: -0.00604614}
-      rotation: {x: 0.0039999336, y: -0, z: 0.9999921, w: -0.000000059604645}
-      scale: {x: 1, y: 1, z: 1.0000001}
+      rotation: {x: 0.0039999005, y: -0, z: 0.9999921, w: -0.000000059604645}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000002}
     - name: L_Knee
       parentName: L_Thigh
       position: {x: -0.4336838, y: 0, z: 2.0597033e-18}
-      rotation: {x: 0.9999853, y: 2.1742606e-12, z: 0.0054328814, w: 3.2381883e-10}
-      scale: {x: 0.9999998, y: 0.9999998, z: 1.0000004}
+      rotation: {x: 0.9999853, y: -0.000000119206156, z: 0.0054328716, w: 8.0064344e-10}
+      scale: {x: 0.9999998, y: 0.99999994, z: 1.0000004}
     - name: L_Foot
       parentName: L_Knee
       position: {x: -0.55172634, y: -1.2250062e-16, z: -4.047873e-15}
-      rotation: {x: -0.7970664, y: -0.00000013753035, z: -0.6038917, w: 0.00000006450264}
-      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+      rotation: {x: -0.7970664, y: -0.00000004183782, z: -0.6038917, w: -0.000000006587369}
+      scale: {x: 1.0000001, y: 1, z: 1}
     - name: L_Toe
       parentName: L_Foot
       position: {x: -0.22829334, y: -2.6914586e-17, z: 3.5527136e-17}
-      rotation: {x: -0, y: -0.000000029802314, z: -0, w: 1}
-      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000001}
+      rotation: {x: -0, y: -0.000000029802315, z: -3.5527128e-15, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
     - name: R_Thigh
       parentName: Root
       position: {x: 0.04314718, y: 0.17423305, z: -0.0060461075}
-      rotation: {x: -0.9999921, y: -0.000000059604645, z: 0.0039999005, w: 0}
-      scale: {x: 1.0000004, y: 1, z: 1.0000002}
+      rotation: {x: -0.9999921, y: -0.000000059604645, z: 0.0039998787, w: 0}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000004}
     - name: R_Knee
       parentName: R_Thigh
       position: {x: 0.43368286, y: 0, z: 0.000000047998462}
-      rotation: {x: 0.9999852, y: 0.000000059601987, z: 0.0054329257, w: -5.622341e-10}
-      scale: {x: 1, y: 1.0000004, z: 1.0000001}
+      rotation: {x: 0.9999853, y: -2.1742606e-12, z: 0.0054329364, w: -3.238221e-10}
+      scale: {x: 1.0000004, y: 0.99999994, z: 0.99999994}
     - name: R_Foot
       parentName: R_Knee
       position: {x: 0.5517272, y: 3.5527136e-17, z: 0.000000024335296}
-      rotation: {x: 0.7970664, y: -2.811191e-10, z: 0.60389173, w: 0.00000002980099}
-      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+      rotation: {x: -0.7970664, y: 0.00000013753038, z: -0.60389173, w: -0.00000006450265}
+      scale: {x: 0.99999994, y: 1, z: 1}
     - name: R_Toe
       parentName: R_Foot
       position: {x: 0.22829331, y: 1.4566126e-15, z: -0.0000008590828}
-      rotation: {x: -0, y: -0.000000029802315, z: -8.1878927e-16, w: 1}
-      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+      rotation: {x: -0, y: -0.000000029802314, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

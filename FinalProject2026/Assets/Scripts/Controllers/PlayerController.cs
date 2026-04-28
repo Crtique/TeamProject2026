@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     // --- Declare Variables ---
-    public bool freeze;
-    public bool unlimited;
-    public bool restricted;
+    public bool freeze { get; set; }
+    public bool unlimited { get; set; }
+    public bool restricted { get; set; }
     [Space]
 
     [Header("Player Movement")]
@@ -39,11 +39,12 @@ public class PlayerController : MonoBehaviour
     // --- Declare Components ---
     private Rigidbody rb;
     private PlatformDetection plat;
-    //public Animator anim;
+    public Animator anim;
 
     // -- Animation bools --
-    //bool isRunning;
-    //bool isJumping;
+    bool isRunning;
+    bool isJumping;
+    public bool isFalling {  get; set; }
 
     void Awake()
     {
@@ -54,12 +55,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // -- Declare Animations --
-
-        //anim.SetBool("isRunning", isRunning);
-        //anim.SetBool("isJumping", isJumping);
-
-        // ------------------------
+        Animation();
 
         // Check if the player is grounded
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, isGround);
@@ -73,6 +69,7 @@ public class PlayerController : MonoBehaviour
         else
             rb.linearDamping = 0;
 
+        // Freez Player Rotation
         if (freeze)
         {
             rb.linearVelocity = Vector3.zero;
@@ -90,33 +87,31 @@ public class PlayerController : MonoBehaviour
         SpeedControl();
     }
 
+    // -- Declare Animations Function --
+    void Animation()
+    {
+        anim.SetBool("isRunning", isRunning);
+        anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isFalling", isFalling);
+    }
+
+    // Player Input Function
     void Inputs()
     {
         // Call Jump funtions
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             ableToJump = false;
-            //isJumping = true;
+            isJumping = true;
             Jump();
         }
-        /*
         else
         {
             isJumping = false;
         }
-        */
-    }
 
-    // Player Movement Function called every fixed frame
-    void PlayerMove()
-    {
-        // When the player is on a ledge exit this function
-        if (restricted) return;
-
-
-/*
-        // Moving Animation
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        // -- Animation Inputs --
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && isGrounded)
         {
             isRunning = true;
         }
@@ -124,7 +119,13 @@ public class PlayerController : MonoBehaviour
         {
             isRunning = false;
         }
-*/  
+    }
+
+    // Player Movement Function called every fixed frame
+    void PlayerMove()
+    {
+        // When the player is on a ledge exit this function
+        if (restricted) return;
 
 
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -149,11 +150,19 @@ public class PlayerController : MonoBehaviour
 
         // on ground
         if (isGrounded)
+        {
+            isFalling = false;
+
             rb.AddForce(10f * moveSpeed * move.normalized, ForceMode.Force);
+        }
 
         // in air
         else
+        {
+            isFalling = true;
+
             rb.AddForce(10f * airMultiplier * moveSpeed * move.normalized, ForceMode.Force);
+        }
     }
 
     // Player Speed Control function called every frame

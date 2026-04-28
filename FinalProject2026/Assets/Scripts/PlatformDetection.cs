@@ -24,6 +24,7 @@ public class PlatformDetection : MonoBehaviour
         }
     }
 
+    // Detection for when we are on a Moving Platform
     private bool OnPlatform()
     {
         // Check when we are on the platform on not
