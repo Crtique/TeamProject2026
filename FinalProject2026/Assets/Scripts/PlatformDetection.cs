@@ -1,3 +1,4 @@
+/*Script was written by CJ Robinson. handle player platform detection*/
 using UnityEngine;
 
 public class PlatformDetection : MonoBehaviour

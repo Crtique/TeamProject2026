@@ -1,3 +1,4 @@
+/*Script was written by CJ Robinson. handle player ledge climbing*/
 using UnityEngine;
 
 public class LedgClimbingController : MonoBehaviour

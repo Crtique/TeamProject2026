@@ -1,3 +1,4 @@
+/*Script was written by CJ Robinson. handle UI menu*/
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

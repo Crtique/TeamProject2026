@@ -1,3 +1,4 @@
+/*Script was written by CJ Robinson. handle UI hover effects*/
 using UnityEngine;
 using UnityEngine.UIElements;
 
