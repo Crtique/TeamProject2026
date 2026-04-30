@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8663678781461897837}
   - component: {fileID: 3878584941658640296}
   - component: {fileID: 5267959659758766401}
+  - component: {fileID: 4795219078390062404}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -215,6 +216,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnPoint: {fileID: 0}
+--- !u!114 &4795219078390062404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316960010008434573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8e2b9ce97b0dc45b70029c62ff0449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LadderJumpUpwardForce: 0
+  speed: 0
 --- !u!1001 &8446616906186849345
 PrefabInstance:
   m_ObjectHideFlags: 0
