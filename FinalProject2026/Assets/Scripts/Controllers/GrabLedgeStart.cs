@@ -1,7 +1,6 @@
-/*Script was written by CJ Robinson. handle player ledge climbing*/
 using UnityEngine;
 
-public class LedgClimbingController : MonoBehaviour
+public class GrabLedgeStart : MonoBehaviour
 {
     // -- Components --
     private Rigidbody rb;
@@ -27,7 +26,7 @@ public class LedgClimbingController : MonoBehaviour
     [Header("Ledge Checks")]
     public float ledgeCheckLength;
     public float ledgeSphereCastRadius;
-    public LayerMask isLedge;
+    public LayerMask startLedge;
 
     private Transform lastLedge;
     private Transform currentLedge;
@@ -99,8 +98,8 @@ public class LedgClimbingController : MonoBehaviour
         Vector3 ledgeGrabDirection = transform.right;
 
         // Create a sphere to where the ledge is when the player is facing forwards
-        bool ledgeDetect = Physics.SphereCast(transform.position, ledgeSphereCastRadius, ledgeGrabDirection, out ledgeHit, ledgeCheckLength, isLedge);
-        
+        bool ledgeDetect = Physics.SphereCast(transform.position, ledgeSphereCastRadius, ledgeGrabDirection, out ledgeHit, ledgeCheckLength, startLedge);
+
         // If you can't find the ledge then leave the function
         if (!ledgeDetect) return;
 
@@ -111,7 +110,10 @@ public class LedgClimbingController : MonoBehaviour
         // Check if the distance is less than out maximum distance and if we are not on a ledge
         // if so enter the ledge holding function
         if (distanceToLedge < maxLedgeGrabDistance && !isOnLedge)
+        { 
+            Debug.DrawRay(transform.position, Vector3.right, Color.green);
             EnterLedgeHold();
+        }
     }
 
 

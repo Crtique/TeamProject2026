@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
-    private PlatformDetection plat;
     public Animator anim;
 
     // -- Animation bools --
@@ -111,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // -- Animation Inputs --
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && isGrounded)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) && isGrounded)
         {
             isRunning = true;
         }
@@ -152,7 +151,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             isFalling = false;
-
+            Debug.DrawRay(transform.position, Vector3.down, Color.magenta);
             rb.AddForce(10f * moveSpeed * move.normalized, ForceMode.Force);
         }
 
