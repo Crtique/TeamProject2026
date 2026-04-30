@@ -1,3 +1,4 @@
+/*made by Autumn*/
 using UnityEngine;
 
 public class LadderClimb : MonoBehaviour
@@ -12,6 +13,9 @@ public class LadderClimb : MonoBehaviour
     [Header("Ladder Jump")]
     public float LadderJumpUpwardForce;
 
+    [Header("climbing")]
+    public float speed;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,15 +29,16 @@ public class LadderClimb : MonoBehaviour
 
     void Update()
     {
-        if(AtLadder && !isClimbing && Input.GetKeyDown(KeyCode.W)) {
+        if(AtLadder && !isClimbing && Input.GetKeyDown(KeyCode.W)) {//checks if the player wants to get on the ladder
             StartClimb();
-        } else if(isClimbing && Input.GetKey(KeyCode.W)) {
+        } else if(isClimbing && Input.GetKey(KeyCode.W)) {//checks if the player wants to move up the ladder
             ClimbUp();
-        } else if(isClimbing && Input.GetKeyDown(KeyCode.Space)) {
+        } else if(isClimbing && Input.GetKeyDown(KeyCode.Space)) { //checks if the player wants to jump off the ladder
             ClimbJump();
         }
     }
 
+    //sets variables for the ladder climbing state to work
     private void StartClimb()
     {
         rb.transform.position = new Vector3(Ladder.transform.position.x, rb.transform.position.y, rb.transform.position.z);
@@ -48,10 +53,7 @@ public class LadderClimb : MonoBehaviour
 
     private void ClimbJump()
     {
-        isClimbing = false;
-        rb.useGravity = true;
-        player.unlimited = false;
-        player.restricted = false;
+        LeaveLadder();
 
         // Multiply the jumpforce to move the player up on the Y axis 
         Vector3 forceToAdd = Vector3.up * LadderJumpUpwardForce;
@@ -63,9 +65,10 @@ public class LadderClimb : MonoBehaviour
         rb.AddForce(forceToAdd, ForceMode.Impulse);
     }
 
+    //moves the player up the ladder
     private void ClimbUp()
     {
-        rb.transform.position = new Vector3(rb.transform.position.x,rb.transform.position.y + Time.deltaTime,rb.transform.position.z);
+        rb.transform.position = new Vector3(rb.transform.position.x,rb.transform.position.y + Time.deltaTime * speed,rb.transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,7 +85,16 @@ public class LadderClimb : MonoBehaviour
         if (other.tag == "Ladder") {
             AtLadder = false;
             Ladder = null;
-            isClimbing = false;
+            LeaveLadder();
         }
+    }
+
+    //called when the player exits climbing the ladder, setting variables for normal gameplay
+    private void LeaveLadder()
+    {
+        isClimbing = false;
+        rb.useGravity = true;
+        player.unlimited = false;
+        player.restricted = false;
     }
 }

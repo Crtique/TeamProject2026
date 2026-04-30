@@ -1011,6 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LadderJumpUpwardForce: 10
+  speed: 6
 --- !u!1 &1692499887
 GameObject:
   m_ObjectHideFlags: 0
