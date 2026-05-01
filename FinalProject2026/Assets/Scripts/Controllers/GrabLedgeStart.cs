@@ -7,33 +7,36 @@ public class GrabLedgeStart : MonoBehaviour
     private PlayerController player;
 
     [Header("Ledge Grabbing")]
-    public float moveToLedgeSpeed;
-    public float maxLedgeGrabDistance;
+    [SerializeField] float moveToLedgeSpeed;
+    [SerializeField] float maxLedgeGrabDistance;
 
-    public float minTimeOnLedge;
+    [SerializeField] float minTimeOnLedge;
     private float currentTimeOnLedge;
 
+    [HideInInspector]
     public bool isOnLedge { get; private set; }
 
     [Header("Ledge Jumping")]
-    public float ledgeJumpUpwardForce;
+    [SerializeField] float ledgeJumpUpwardForce;
 
     [Header("Exiting")]
-    public bool exitLedge;
-    public float exitLedgeTime;
+    [SerializeField] float exitLedgeTime;
     private float exitLedgeTimer;
 
+    [HideInInspector]
+    public bool exitLedge;
+
     [Header("Ledge Checks")]
-    public float ledgeCheckLength;
-    public float ledgeSphereCastRadius;
-    public LayerMask startLedge;
+    [SerializeField] float ledgeCheckLength;
+    [SerializeField] float ledgeSphereCastRadius;
+    [SerializeField] LayerMask startLedge;
 
     private Transform lastLedge;
     private Transform currentLedge;
 
     private RaycastHit ledgeHit;
 
-    public Animator ledgeAnim;
+    [SerializeField] Animator ledgeAnim;
 
 
     // -- Declare Ledge Animation Bools --

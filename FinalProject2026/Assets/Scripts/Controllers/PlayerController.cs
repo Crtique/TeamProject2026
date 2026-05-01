@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     // --- Declare Variables ---
+    [HideInInspector]
     public bool freeze { get; set; }
     public bool unlimited { get; set; }
     public bool restricted { get; set; }
@@ -18,17 +19,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 move;
 
     [Header("Jumping Control")]
-    public float jumpHeight    = 20f;
-    public float jumpCooldown  = 5f;
-    public float airMultiplier = 3;
+    [SerializeField] float jumpHeight    = 20f;
+    [SerializeField] float airMultiplier = 3;
     private bool ableToJump;
 
     [Header("Ground Drag")]
     public float gDrag = 5f; // Ground Drag
 
     [Header("Ground Checks")]
-    public float playerHeight;
-    public LayerMask isGround;
+    [SerializeField] float playerHeight;
+    [SerializeField] LayerMask isGround;
     private bool isGrounded;
 
     [Header("Slope Control")]
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     // --- Declare Components ---
     private Rigidbody rb;
-    public Animator anim;
+    [SerializeField] Animator anim;
 
     // -- Animation bools --
     bool isRunning;
