@@ -5,16 +5,21 @@ public class LadderClimb : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerController player;
+    [SerializeField] Animator anim;
 
     private bool AtLadder = false;
     private GameObject Ladder;
     private bool isClimbing = false;
 
     [Header("Ladder Jump")]
-    public float LadderJumpUpwardForce;
+    [SerializeField] float LadderJumpUpwardForce;
 
     [Header("climbing")]
-    public float speed;
+    [SerializeField] float speed;
+
+
+    // -- Animation Bool --
+    bool climbing;
 
     private void Awake()
     {
@@ -29,9 +34,14 @@ public class LadderClimb : MonoBehaviour
 
     void Update()
     {
-        if(AtLadder && !isClimbing && Input.GetKeyDown(KeyCode.W)) {//checks if the player wants to get on the ladder
+        // Set animation
+        anim.SetBool("climbing", climbing);
+
+        if (AtLadder && !isClimbing && Input.GetKeyDown(KeyCode.W)) {//checks if the player wants to get on the ladder
             StartClimb();
         } else if(isClimbing && Input.GetKey(KeyCode.W)) {//checks if the player wants to move up the ladder
+            // Start Climbing Animation
+            climbing = true;
             ClimbUp();
         } else if(isClimbing && Input.GetKeyDown(KeyCode.Space)) { //checks if the player wants to jump off the ladder
             ClimbJump();
@@ -42,6 +52,7 @@ public class LadderClimb : MonoBehaviour
     private void StartClimb()
     {
         rb.transform.position = new Vector3(Ladder.transform.position.x, rb.transform.position.y, rb.transform.position.z);
+
         isClimbing=true;
 
         player.unlimited = true;
@@ -92,6 +103,9 @@ public class LadderClimb : MonoBehaviour
     //called when the player exits climbing the ladder, setting variables for normal gameplay
     private void LeaveLadder()
     {
+        // End climbing Animation
+        climbing = false;
+
         isClimbing = false;
         rb.useGravity = true;
         player.unlimited = false;
