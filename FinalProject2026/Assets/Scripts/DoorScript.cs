@@ -13,13 +13,12 @@ public class DoorScript : MonoBehaviour
     {
         if (doorActive && Input.GetKeyDown(KeyCode.E) && doorEnabled && exit!=null) {
             doorEnabled = false;
-            StartCoroutine(enterDoor());
+            enterDoor();
         }
     }
 
-    public IEnumerator enterDoor()
+    public void enterDoor()
     {
-        yield return new WaitForSeconds(1);
         doorEnabled = true;
         rb.position = exit.transform.position;
     }
