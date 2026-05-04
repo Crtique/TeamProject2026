@@ -51,7 +51,7 @@ public class LadderClimb : MonoBehaviour
     //sets variables for the ladder climbing state to work
     private void StartClimb()
     {
-        rb.transform.position = new Vector3(Ladder.transform.position.x, rb.transform.position.y, rb.transform.position.z);
+        rb.position = new Vector3(Ladder.transform.position.x, rb.position.y, rb.position.z);
 
         isClimbing=true;
 
@@ -79,7 +79,7 @@ public class LadderClimb : MonoBehaviour
     //moves the player up the ladder
     private void ClimbUp()
     {
-        rb.transform.position = new Vector3(rb.transform.position.x,rb.transform.position.y + Time.deltaTime * speed,rb.transform.position.z);
+        rb.position = new Vector3(rb.transform.position.x,rb.transform.position.y + Time.deltaTime * speed,rb.transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
