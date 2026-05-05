@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     // -- Declare Variables
     [SerializeField] Canvas gameOver;
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float timeRemaining = 190f;
+    [SerializeField] float timeRemaining = 60; // this is in seconds
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
         timerText.enabled = false;
         gameOver.enabled = true;
+        AudioManager.Instance.StopMusic();
     }
     
     // Restart the game
