@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     bool isJumping;
     public bool isFalling {  get; set; }
 
+    [SerializeField] AudioClip walkingSound;
+
     void Awake()
     {
         // Grab the Ridgidbody Component at the start of the game
@@ -61,6 +63,15 @@ public class PlayerController : MonoBehaviour
         JumpReset();
 
         Inputs();
+
+        if (isRunning == true && isGrounded)
+        {
+            AudioManager.Instance.PlayAudio2(walkingSound, 1f);
+        }
+        else
+        {
+            AudioManager.Instance.Stop(walkingSound);
+        }
 
         // Handle the drag
         if (isGrounded)
@@ -125,7 +136,6 @@ public class PlayerController : MonoBehaviour
     {
         // When the player is on a ledge exit this function
         if (restricted) return;
-
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
