@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
 
         timerText.enabled = false;
         gameOver.enabled = true;
-        AudioManager.Instance.StopMusic();
     }
     
     // Restart the game

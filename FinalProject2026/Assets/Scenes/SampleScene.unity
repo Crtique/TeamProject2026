@@ -3064,6 +3064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Music: {fileID: 8300000, guid: 9eea78f5f0554f141879c46b264d0b7a, type: 3}
+  sound: {fileID: 8300000, guid: 911521392c3789b41a968b81c4c09e4b, type: 3}
 --- !u!4 &101020136
 Transform:
   m_ObjectHideFlags: 0
@@ -28770,6 +28771,14 @@ PrefabInstance:
       propertyPath: maxLedgeGrabDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8723792693131130955, guid: d5e1eed53270995468736f179485aa15, type: 3}
+      propertyPath: steps
+      value: 
+      objectReference: {fileID: 8300000, guid: 777bdb429348c214ea89889898f98dca, type: 3}
+    - target: {fileID: 8723792693131130955, guid: d5e1eed53270995468736f179485aa15, type: 3}
+      propertyPath: walkingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 777bdb429348c214ea89889898f98dca, type: 3}
     m_RemovedComponents:
     - {fileID: 3878584941658640296, guid: d5e1eed53270995468736f179485aa15, type: 3}
     m_RemovedGameObjects: []
@@ -36838,37 +36847,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6936717230950247559, guid: 934f1c11ead398542a9aa8856c08e17b, type: 3}
   m_PrefabInstance: {fileID: 1177852203}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1178665329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1178665330}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1178665330
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178665329}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 644.5, y: 352, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1179082226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64372,4 +64350,3 @@ SceneRoots:
   - {fileID: 726207835}
   - {fileID: 1209150008}
   - {fileID: 101020136}
-  - {fileID: 1178665330}

@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     // Audio Sorces
     [SerializeField] AudioSource sfx;
+    [SerializeField] AudioSource sfx2;
     [SerializeField] AudioSource music;
 
     // Singleton Instance
@@ -24,18 +25,38 @@ public class AudioManager : MonoBehaviour
 
         // Continue over scenes
         DontDestroyOnLoad(this);
-
-        // Perminetly assign the AudioSource Component
-        music = GetComponent<AudioSource>();
-        sfx = GetComponent<AudioSource>();
     }
 
     // Play sound effects and set the volume of them
     public void PlayAudio(AudioClip clip, float volume)
     {
+        // Audio Clip
         sfx.clip = clip;
+        
+        // Volume of the sound effect
         sfx.volume = volume;
+
+        // Play the sound
         sfx.Play();
+
+        // Loop the audio
+        sfx.loop = true;
+    }
+
+    // Play sound effects and set the volume of them
+    public void PlayAudio2(AudioClip clip, float volume)
+    {
+        // Audio Clip
+        sfx2.clip = clip;
+
+        // Volume of the sound effect
+        sfx2.volume = volume;
+
+        // Play the sound
+        sfx2.Play();
+
+        // Loop the audio
+        sfx2.loop = true;
     }
 
     // Play gmae Music and set the volume of it
@@ -46,8 +67,8 @@ public class AudioManager : MonoBehaviour
         music.Play();
     }
 
-    public void StopMusic()
+    public void Stop(AudioClip clip)
     {
-        music.Stop();
+        sfx2.Stop();
     }
 }
