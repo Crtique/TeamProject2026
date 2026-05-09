@@ -7,7 +7,7 @@ public class AudioPlayer : MonoBehaviour
 
     private void Awake()
     {
-        AudioManager.Instance.PlayMusic(Music, 1f);
-        AudioManager.Instance.PlayAudio(sound, 1f);
+        AudioManager.Instance.PlayAudio(Music, 1f);
+        AudioManager.Instance.PlayAudio(sound, 0.3f);
     }
 }

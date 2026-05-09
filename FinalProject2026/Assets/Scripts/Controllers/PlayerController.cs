@@ -64,13 +64,9 @@ public class PlayerController : MonoBehaviour
 
         Inputs();
 
-        if (isRunning == true && isGrounded)
+        if (isRunning && isGrounded)
         {
-            AudioManager.Instance.PlayAudio2(walkingSound, 1f);
-        }
-        else
-        {
-            AudioManager.Instance.Stop(walkingSound);
+            AudioManager.Instance.PlayAudio(walkingSound, 0.1f);
         }
 
         // Handle the drag
