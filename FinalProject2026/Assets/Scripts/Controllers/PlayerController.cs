@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitSlop;
 
+    [Header("Particle")]
+    [SerializeField] ParticleSystem footstepPart;
+
     // --- Declare Components ---
     private Rigidbody rb;
     [SerializeField] Animator anim;
@@ -120,10 +123,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) && isGrounded)
         {
             isRunning = true;
+            footstepPart.Play();
         }
         else
         {
             isRunning = false;
+            footstepPart.Stop();
         }
     }
 
