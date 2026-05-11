@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.37036, y: 18.628021}
+  m_AnchoredPosition: {x: -136.37036, y: 119.54956}
   m_SizeDelta: {x: -277, y: -559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161957061
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NAME
+  m_text: 'Animation - Timothy Mckeon, Peyton McGrath
 
 '
   m_isRightToLeft: 0
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -250.86804, y: 0, z: -1313.4451, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2184,7 +2184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.37036, y: 250.72128}
+  m_AnchoredPosition: {x: -136.37036, y: 396.49677}
   m_SizeDelta: {x: -277, y: -559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754935420
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Eddie Sacco - Producer, Level Designer, Sound and Music Composition
+  m_text: Level Design - Edward Sacco, Brady Easter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2272,7 +2272,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -246.49522, y: 0, z: -1302.4011, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2352,7 +2352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.37036, y: 135.87146}
+  m_AnchoredPosition: {x: -136.37036, y: 264.82672}
   m_SizeDelta: {x: -277, y: -559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839962624
@@ -2375,7 +2375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NAME
+  m_text: 'Programming - CJ Robinson, Autumn Lash
 
 '
   m_isRightToLeft: 0
@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -243.59546, y: 0, z: -1312.3047, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2578,7 +2578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.37036, y: -119.15979}
+  m_AnchoredPosition: {x: -136.37036, y: -18.238277}
   m_SizeDelta: {x: -277, y: -559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861623870
@@ -2601,7 +2601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NAME
+  m_text: '3D Modeling & 2D Art - Peyton Mcgrath, Edward Sacco
 
 '
   m_isRightToLeft: 0
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -237.51332, y: 0, z: -1300.9783, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3061,7 +3061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.37036, y: -250.37317}
+  m_AnchoredPosition: {x: -136.37036, y: -162.0668}
   m_SizeDelta: {x: -277, y: -559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &914689674
@@ -3084,7 +3084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NAME
+  m_text: Music and SFX - Edward Sacco
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -3149,7 +3149,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -249.62679, y: 0, z: -1307.1259, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6653,3 +6653,7 @@ SceneRoots:
   - {fileID: 12775158}
   - {fileID: 482180658}
   - {fileID: 1874694681}
+  - {fileID: 1219282192}
+  - {fileID: 111679420}
+  - {fileID: 384282114}
+  - {fileID: 1057750978}
