@@ -36,16 +36,19 @@ public class PlayerController : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitSlop;
 
-    // --- Declare Components ---
+    [Header("Particle")]
+    [SerializeField] ParticleSystem footstepPart;
+
+    // --- Declare Components --- //
     private Rigidbody rb;
     [SerializeField] Animator anim;
 
-    // -- Animation bools --
+    // --- Animation bools --- //
     bool isRunning;
     bool isJumping;
     public bool isFalling {  get; set; }
 
-    [SerializeField] AudioClip walkingSound;
+    [SerializeField] AudioSource walkingSound;
 
     void Awake()
     {
@@ -64,6 +67,14 @@ public class PlayerController : MonoBehaviour
 
         Inputs();
 
+        if (isRunning == true && isGrounded)
+        {
+            AudioManager.Instance.PlayAudio2(walkingSound, 1f);
+        }
+        else
+        {
+            AudioManager.Instance.Stop(walkingSound);
+        }
 
         // Handle the drag
         if (isGrounded)
@@ -116,10 +127,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) && isGrounded)
         {
             isRunning = true;
+            footstepPart.Play();
         }
         else
         {
             isRunning = false;
+            footstepPart.Stop();
         }
     }
 
