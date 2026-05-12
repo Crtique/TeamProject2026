@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
 
         Inputs();
 
-        
 
         // Handle the drag
         if (isGrounded)
