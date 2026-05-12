@@ -14,13 +14,7 @@ public class Respawn : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        if(RespawnPoint != null && Input.GetKeyDown(KeyCode.R)) {
-            rb.position = RespawnPoint.transform.position;
-            rb.linearVelocity = new Vector3(0, 0, 0);
-        }
-    }
+
 
     private void OnTriggerEnter(Collider Other)
     {
