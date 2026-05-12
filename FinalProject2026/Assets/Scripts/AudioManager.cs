@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    // Play sound effects and set the volume of them
+    // ---- Play sound effects and set the volume of them ---- //
     public AudioSource PlayAudio(AudioClip clip, float volume)
     {
         // Make a new GO and optionally place it in 3d space for where we want it to project from
@@ -40,10 +40,29 @@ public class AudioManager : MonoBehaviour
 
         sources.Add(newSource);
         newSource.Play();
-        newSource.loop = true;
 
         StartCoroutine(DestroyAudioSource(newSource));
         return newSource;
+    }
+
+    // ---- The Music Player ---- // 
+    public AudioSource PlayMusic(AudioClip clip, float volume)
+    {
+        // Make a new GO and optionally place it in 3d space for where we want it to project from
+        var newGO = new GameObject($"AudioSource_{clip.name}");
+
+        // Set up the clip component
+        var musicSource = newGO.AddComponent<AudioSource>();
+        musicSource.clip = clip;
+        musicSource.volume = volume;
+        musicSource.playOnAwake = false;
+
+        sources.Add(musicSource);
+        musicSource.Play();
+        musicSource.loop = true;
+
+        StartCoroutine(DestroyAudioSource(musicSource));
+        return musicSource;
     }
 
     private IEnumerator DestroyAudioSource(AudioSource desiredSource)

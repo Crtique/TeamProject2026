@@ -39,11 +39,11 @@ public class PlayerController : MonoBehaviour
     [Header("Particle")]
     [SerializeField] ParticleSystem footstepPart;
 
-    // --- Declare Components ---
+    // --- Declare Components --- //
     private Rigidbody rb;
     [SerializeField] Animator anim;
 
-    // -- Animation bools --
+    // --- Animation bools --- //
     bool isRunning;
     bool isJumping;
     public bool isFalling {  get; set; }
