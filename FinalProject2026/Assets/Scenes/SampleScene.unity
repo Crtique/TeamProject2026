@@ -3786,7 +3786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: {fileID: 669905160}
   timerText: {fileID: 679204115}
-  timeRemaining: 300
+  timeRemaining: 200
 --- !u!4 &127292764
 Transform:
   m_ObjectHideFlags: 0
