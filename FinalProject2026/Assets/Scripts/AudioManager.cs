@@ -40,8 +40,9 @@ public class AudioManager : MonoBehaviour
 
         sources.Add(newSource);
         newSource.Play();
+        newSource.loop = true;
 
-        DestroyAudioSource(newSource);
+        StartCoroutine(DestroyAudioSource(newSource));
         return newSource;
     }
 

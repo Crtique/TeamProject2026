@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     bool isJumping;
     public bool isFalling {  get; set; }
 
-    [SerializeField] AudioClip walkingSound;
+    [SerializeField] AudioSource walkingSound;
 
     void Awake()
     {
@@ -67,9 +67,13 @@ public class PlayerController : MonoBehaviour
 
         Inputs();
 
-        if (isRunning && isGrounded)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && isGrounded)
         {
-            AudioManager.Instance.PlayAudio(walkingSound, 0.1f);
+            walkingSound.enabled = true;
+        }
+        else
+        {
+            walkingSound.enabled = false;
         }
 
         // Handle the drag
