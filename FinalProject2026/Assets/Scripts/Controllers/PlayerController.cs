@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     private bool exitSlop;
 
     [Header("Particle")]
-    [SerializeField] ParticleSystem footstepPart;
 
     // --- Declare Components --- //
     private Rigidbody rb;
@@ -118,12 +117,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) && isGrounded)
         {
             isRunning = true;
-            footstepPart.Play();
+            walkingSound.enabled = true;
         }
         else
         {
             isRunning = false;
-            footstepPart.Stop();
+            walkingSound.enabled = false;
         }
     }
 
