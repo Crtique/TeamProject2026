@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] AudioClip Select;
+    [SerializeField] AudioClip Noise;
+
+    private void Awake()
+    {
+        AudioManager.Instance.PlayMusic(Noise, 1f);
+    }
+
     // Start Game
     public void PlayGame()
     {
