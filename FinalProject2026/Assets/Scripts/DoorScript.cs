@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class DoorScript : MonoBehaviour
     private Rigidbody rb;
     private GameObject playerRender;
     private PlayerController controller;
+    public AudioClip doorOpen;
+    public AudioClip doorClose;
 
     void Update()
     {
@@ -18,6 +21,7 @@ public class DoorScript : MonoBehaviour
             playerRender.SetActive(false);
             controller.unlimited = true;
             controller.restricted = true;
+            AudioManager.Instance.PlayAudio(doorOpen, 1f);
             StartCoroutine(enterDoor());
         }
     }
@@ -25,6 +29,7 @@ public class DoorScript : MonoBehaviour
     public IEnumerator enterDoor()
     {
         yield return new WaitForSeconds(1);
+        AudioManager.Instance.PlayAudio(doorClose, 1f);
         playerRender.SetActive(true);
         doorEnabled = true;
         controller.unlimited = false;
