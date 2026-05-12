@@ -62274,6 +62274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: windowwall (176)
       objectReference: {fileID: 0}
+    - target: {fileID: 7714660926668846653, guid: 934f1c11ead398542a9aa8856c08e17b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
