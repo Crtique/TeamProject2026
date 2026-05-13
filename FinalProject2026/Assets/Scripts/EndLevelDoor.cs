@@ -1,3 +1,5 @@
+/*created by Autumn*/
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SceneManagement;
@@ -9,6 +11,7 @@ public class EndLevelDoor : MonoBehaviour
     public string menu = "MainMenuObj";
     public string credits = "CreditsMenuObj";
     public string canvas = "Canvas";
+    public AudioClip doorOpen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +25,7 @@ public class EndLevelDoor : MonoBehaviour
         if (doorActive && Input.GetKeyDown(KeyCode.E)) {
             SceneManager.LoadScene(0); 
             loading = true;
+            AudioManager.Instance.PlayAudio(doorOpen, 1f);
         }
     }
 
