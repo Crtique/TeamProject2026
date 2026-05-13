@@ -1,3 +1,4 @@
+// This script was writen by CJ Robinson. It handles the Loading screen
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;

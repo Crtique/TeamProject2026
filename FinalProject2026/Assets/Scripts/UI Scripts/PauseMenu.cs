@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] Canvas pauseScreen;
-
     bool paused = false;
 
     private void Start()
@@ -42,7 +41,6 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-
     // Exit the game
     public void QuitGame()
     {

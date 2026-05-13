@@ -1,3 +1,4 @@
+// This script was writen by CJ Robinson. It handles the ambient noise and game music.
 using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour

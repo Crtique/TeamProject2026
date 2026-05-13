@@ -1,3 +1,4 @@
+// This script was writen by CJ Robinson. This script handles all the ledge grabing control
 using UnityEngine;
 
 public class GrabLedgeStart : MonoBehaviour

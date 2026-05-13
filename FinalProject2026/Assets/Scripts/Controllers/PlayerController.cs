@@ -1,7 +1,9 @@
 /*Script was written by CJ Robinson. handle player movement using ridgidbody*/
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
@@ -46,8 +48,11 @@ public class PlayerController : MonoBehaviour
     bool isRunning;
     bool isJumping;
     public bool isFalling {  get; set; }
+    bool isTucking;
 
     [SerializeField] AudioSource walkingSound;
+
+    [SerializeField] ParticleSystem ps;
 
     void Awake()
     {
@@ -96,6 +101,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isRunning", isRunning);
         anim.SetBool("isJumping", isJumping);
         anim.SetBool("isFalling", isFalling);
+        anim.SetBool("isTucking", isTucking);
     }
 
     // Player Input Function
@@ -117,12 +123,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) && isGrounded)
         {
             isRunning = true;
-            walkingSound.enabled = true;
+            walkingSound.enabled = true; // Enable Walking Sound
+
+            if (!ps.isPlaying && isGrounded)
+                ps.Play();
         }
         else
         {
             isRunning = false;
-            walkingSound.enabled = false;
+            walkingSound.enabled = false; // Disable Walking Sound
+
+            if (ps.isPlaying && !isGrounded)
+                ps.Stop();
         }
     }
 
@@ -156,14 +168,13 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             isFalling = false;
-            Debug.DrawRay(transform.position, Vector3.down, Color.magenta);
             rb.AddForce(10f * moveSpeed * move.normalized, ForceMode.Force);
         }
 
         // in air
         else
         {
-            isFalling = true;
+           isFalling = true;
 
             rb.AddForce(10f * airMultiplier * moveSpeed * move.normalized, ForceMode.Force);
         }

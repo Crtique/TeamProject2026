@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     // Player UI Audio
     public void AudioPlayer()
     {
-        AudioManager.Instance.PlayAudio(Select, 1f);
+        AudioManager.Instance.PlayAudio(Select, 0.5f);
     }
     // Exit Game
     public void QuitGame()

@@ -2795,6 +2795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 95012281}
+  Select: {fileID: 8300000, guid: 183f953bd9e4e794fb4f7aa824ab8265, type: 3}
 --- !u!4 &95995785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4403083752734976780, guid: 760e0cd5bd6f05c4fa40c6b208e44412, type: 3}
@@ -21041,7 +21042,6 @@ Transform:
   - {fileID: 1069251104}
   - {fileID: 1233712616}
   - {fileID: 223526863}
-  - {fileID: 1490829423}
   - {fileID: 869813687}
   - {fileID: 854961734}
   - {fileID: 291992877}
@@ -31071,6 +31071,10 @@ PrefabInstance:
       propertyPath: maxLedgeGrabDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8723792693131130955, guid: d5e1eed53270995468736f179485aa15, type: 3}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 1630459200}
     - target: {fileID: 8723792693131130955, guid: d5e1eed53270995468736f179485aa15, type: 3}
       propertyPath: steps
       value: 
@@ -49829,11 +49833,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 934f1c11ead398542a9aa8856c08e17b, type: 3}
---- !u!4 &1490829423 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4403083752734976780, guid: 760e0cd5bd6f05c4fa40c6b208e44412, type: 3}
-  m_PrefabInstance: {fileID: 1282053545}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1494205416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65550,6 +65549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorActive: 0
   exit: {fileID: 0}
+  doorOpen: {fileID: 0}
+  doorClose: {fileID: 0}
 --- !u!4 &1851488370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4403083752734976780, guid: 760e0cd5bd6f05c4fa40c6b208e44412, type: 3}
@@ -72293,6 +72294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorActive: 0
   exit: {fileID: 1604358352}
+  doorOpen: {fileID: 0}
+  doorClose: {fileID: 0}
 --- !u!4 &2073489365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6936717230950247559, guid: 934f1c11ead398542a9aa8856c08e17b, type: 3}
@@ -75065,3 +75068,7 @@ SceneRoots:
   - {fileID: 69842306}
   - {fileID: 1209150008}
   - {fileID: 101020136}
+  - {fileID: 708208962}
+  - {fileID: 809081065}
+  - {fileID: 1011762440}
+  - {fileID: 1383036922}

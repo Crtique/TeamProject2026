@@ -1,3 +1,4 @@
+// This Script was Writen by CJ Robinson. handles the general game function.
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
